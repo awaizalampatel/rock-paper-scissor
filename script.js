@@ -203,37 +203,28 @@ function playRound(choice) {
     // Disable buttons
     document.querySelectorAll('.hand-btn').forEach(btn => btn.classList.add('disabled'));
 
-    // Reset displays
-    elements.playerHand.innerHTML = '<div class="hand-placeholder"><svg viewBox="0 0 200 200" class="placeholder-icon"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" fill="#444" font-size="60">?</text></svg></div>';
-    elements.computerHand.innerHTML = '<div class="hand-placeholder"><svg viewBox="0 0 200 200" class="placeholder-icon"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" fill="#444" font-size="60">?</text></svg></div>';
+    // Reset classes
     elements.playerHand.className = 'hand-container';
     elements.computerHand.className = 'hand-container';
     elements.statusText.className = 'status-text';
-    elements.statusText.textContent = '3...';
+    elements.statusText.textContent = '...';
 
-    // Countdown animation
-    setTimeout(() => { elements.statusText.textContent = '2...'; }, 400);
-    setTimeout(() => { elements.statusText.textContent = '1...'; }, 800);
+    // Show player hand shaking immediately
+    elements.playerHand.innerHTML = handSVGs[choice];
+    elements.playerHand.classList.add('active');
+    const playerSvg = elements.playerHand.querySelector('.hand-svg');
+    if (playerSvg) playerSvg.classList.add('shake');
 
-    // Show player hand
-    setTimeout(() => {
-        elements.playerHand.innerHTML = handSVGs[choice];
-        elements.playerHand.classList.add('active');
-        const playerSvg = elements.playerHand.querySelector('.hand-svg');
-        if (playerSvg) playerSvg.classList.add('shake');
-    }, 1100);
-
-    // Show computer hand with delay
+    // Show computer hand shaking after short delay
     setTimeout(() => {
         elements.computerHand.innerHTML = handSVGs[computerChoice];
         elements.computerHand.classList.add('active');
         const compSvg = elements.computerHand.querySelector('.hand-svg');
         if (compSvg) compSvg.classList.add('shake');
-    }, 1500);
+    }, 300);
 
-    // Show result
+    // Show result after shake animation
     setTimeout(() => {
-        // Update scores
         state.totalGames++;
         if (result === 'win') {
             state.playerScore++;
@@ -257,7 +248,6 @@ function playRound(choice) {
             elements.statusText.classList.add('draw');
         }
 
-        // Animate score updates
         animateValue(elements.playerScore, state.playerScore - (result === 'win' ? 1 : 0), state.playerScore);
         animateValue(elements.computerScore, state.computerScore - (result === 'lose' ? 1 : 0), state.computerScore);
 
@@ -266,13 +256,11 @@ function playRound(choice) {
         elements.losses.textContent = state.losses;
         elements.draws.textContent = state.draws;
 
-        // Add to history
         addHistory(state.totalGames, choice, computerChoice, result);
 
-        // Re-enable buttons
         document.querySelectorAll('.hand-btn').forEach(btn => btn.classList.remove('disabled'));
         state.isPlaying = false;
-    }, 2200);
+    }, 900);
 }
 
 // Animate number change
@@ -330,13 +318,18 @@ function resetGame() {
     elements.statusText.textContent = 'Pick your hand';
     elements.statusText.className = 'status-text';
 
-    elements.playerHand.innerHTML = '<div class="hand-placeholder"><svg viewBox="0 0 200 200" class="placeholder-icon"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" fill="#444" font-size="60">?</text></svg></div>';
-    elements.computerHand.innerHTML = '<div class="hand-placeholder"><svg viewBox="0 0 200 200" class="placeholder-icon"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" fill="#444" font-size="60">?</text></svg></div>';
-    elements.playerHand.className = 'hand-container';
-    elements.computerHand.className = 'hand-container';
+    initDefaultHands();
 
     elements.historyList.innerHTML = '<div class="history-empty">No rounds played yet</div>';
     document.querySelectorAll('.hand-btn').forEach(btn => btn.classList.remove('disabled'));
+}
+
+// Initialize default hands
+function initDefaultHands() {
+    elements.playerHand.innerHTML = handSVGs.rock;
+    elements.computerHand.innerHTML = handSVGs.rock;
+    elements.playerHand.className = 'hand-container';
+    elements.computerHand.className = 'hand-container';
 }
 
 // Create background particles
@@ -374,4 +367,5 @@ document.addEventListener('keydown', (e) => {
 
 // Initialize
 initButtonHands();
+initDefaultHands();
 createParticles();
