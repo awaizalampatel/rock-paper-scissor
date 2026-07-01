@@ -90,11 +90,12 @@ body {
 }
 
 .subtitle {
-    font-size: 1rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-style: italic;
 }
 
 /* Scoreboard */
