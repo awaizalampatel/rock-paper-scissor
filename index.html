@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="game-container">
+        <header class="header">
+            <h1 class="title">Rock Paper Scissors</h1>
+            <p class="subtitle">Challenge the Machine</p>
+        </header>
+
+        <div class="scoreboard">
+            <div class="score-card player-score">
+                <span class="score-label">You</span>
+                <span class="score-value" id="playerScore">0</span>
+            </div>
+            <div class="score-divider">
+                <span class="vs-text">VS</span>
+            </div>
+            <div class="score-card computer-score">
+                <span class="score-label">Machine</span>
+                <span class="score-value" id="computerScore">0</span>
+            </div>
+        </div>
+
+        <div class="battle-arena">
+            <div class="hand-display" id="playerHandDisplay">
+                <div class="hand-label">Your Hand</div>
+                <div class="hand-container" id="playerHand">
+                    <div class="hand-placeholder">
+                        <svg viewBox="0 0 200 200" class="placeholder-icon">
+                            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" fill="#444" font-size="60">?</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="battle-status" id="battleStatus">
+                <span class="status-text" id="statusText">Pick your hand</span>
+            </div>
+
+            <div class="hand-display" id="computerHandDisplay">
+                <div class="hand-label">Machine Hand</div>
+                <div class="hand-container" id="computerHand">
+                    <div class="hand-placeholder">
+                        <svg viewBox="0 0 200 200" class="placeholder-icon">
+                            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" fill="#444" font-size="60">?</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="hand-btn" data-choice="rock" id="btnRock">
+                <div class="btn-hand" id="btnRockHand"></div>
+                <span class="btn-label">Rock</span>
+            </button>
+            <button class="hand-btn" data-choice="paper" id="btnPaper">
+                <div class="btn-hand" id="btnPaperHand"></div>
+                <span class="btn-label">Paper</span>
+            </button>
+            <button class="hand-btn" data-choice="scissors" id="btnScissors">
+                <div class="btn-hand" id="btnScissorsHand"></div>
+                <span class="btn-label">Scissors</span>
+            </button>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat">
+                <span class="stat-value" id="totalGames">0</span>
+                <span class="stat-label">Rounds</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="wins">0</span>
+                <span class="stat-label">Wins</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="losses">0</span>
+                <span class="stat-label">Losses</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="draws">0</span>
+                <span class="stat-label">Draws</span>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="reset-btn" id="resetBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                Reset Score
+            </button>
+        </div>
+
+        <div class="history-section">
+            <h3 class="history-title">Recent Rounds</h3>
+            <div class="history-list" id="historyList">
+                <div class="history-empty">No rounds played yet</div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Built with precision. No luck involved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
