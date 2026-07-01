@@ -186,15 +186,15 @@ body {
 }
 
 .hand-container {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 50%;
+    border-radius: 16px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
@@ -204,8 +204,8 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, transparent 70%);
+    border-radius: 16px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
 }
 
 .hand-container.active {
@@ -258,8 +258,8 @@ body {
 
 /* Hand SVG Styles */
 .hand-svg {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -546,8 +546,8 @@ body {
 
 /* Button hand SVG */
 .btn-hand svg {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
 }
 
 /* Responsive */

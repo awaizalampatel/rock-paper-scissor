@@ -1,150 +1,133 @@
-// SVG Hand Templates - Realistic hand illustrations
+function makeHandSVG(type, id) {
+    const s = id;
+    const defs = {
+        skin: `<linearGradient id="sk${s}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f0e4d8"/><stop offset="50%" stop-color="#e4d4c4"/><stop offset="100%" stop-color="#d4c0aa"/></linearGradient>`,
+        skinD: `<linearGradient id="sd${s}" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e8d8c8"/><stop offset="100%" stop-color="#ccbaa4"/></linearGradient>`,
+        knuckle: `<radialGradient id="kn${s}" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#eadcce"/><stop offset="100%" stop-color="#d0bea6"/></radialGradient>`,
+        nail: `<linearGradient id="nl${s}" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5ede5"/><stop offset="60%" stop-color="#e8dcd0"/><stop offset="100%" stop-color="#ddd0c2"/></linearGradient>`,
+        shadow: `<filter id="fs${s}"><feDropShadow dx="1" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/></filter>`
+    };
+    return Object.values(defs).join('');
+}
+
+function handRock(id) {
+    const s = id || 'A';
+    const defs = makeHandSVG('rock', s);
+    return `<svg class="hand-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>${defs}</defs>
+    <g filter="url(#fs${s})">
+        <path d="M100 240 Q95 240 93 235 L88 205 Q86 198 91 195 L189 195 Q194 198 192 205 L187 235 Q185 240 180 240Z" fill="url(#sk${s})"/>
+        <line x1="105" y1="218" x2="175" y2="218" stroke="#c4b49e" stroke-width="0.7" opacity="0.35"/>
+        <path d="M91 195 Q86 178 88 160 L92 135 Q95 128 100 125 L180 125 Q185 128 188 135 L192 160 Q194 178 189 195Z" fill="url(#sk${s})"/>
+        <ellipse cx="110" cy="130" rx="13" ry="9" fill="url(#kn${s})" opacity="0.7"/>
+        <ellipse cx="135" cy="127" rx="14" ry="10" fill="url(#kn${s})" opacity="0.7"/>
+        <ellipse cx="160" cy="128" rx="13" ry="9" fill="url(#kn${s})" opacity="0.6"/>
+        <ellipse cx="180" cy="132" rx="11" ry="8" fill="url(#kn${s})" opacity="0.5"/>
+        <path d="M98 125 Q93 118 95 108 Q97 98 104 95 Q111 93 115 98 Q118 103 116 112 L113 125" fill="url(#sk${s})"/>
+        <path d="M102 105 Q106 101 112 103" stroke="#c4b49e" stroke-width="0.7" fill="none" opacity="0.45"/>
+        <path d="M119 123 Q116 114 118 104 Q120 94 128 91 Q136 89 140 94 Q143 99 141 110 L137 123" fill="url(#sd${s})"/>
+        <path d="M123 100 Q128 96 134 98" stroke="#c4b49e" stroke-width="0.7" fill="none" opacity="0.45"/>
+        <path d="M141 124 Q139 115 140 106 Q142 96 150 93 Q158 91 162 96 Q165 101 163 112 L160 124" fill="url(#sk${s})"/>
+        <path d="M145 102 Q150 98 156 100" stroke="#c4b49e" stroke-width="0.7" fill="none" opacity="0.45"/>
+        <path d="M165 127 Q164 119 165 111 Q167 103 173 101 Q179 99 182 104 Q184 109 182 118 L179 127" fill="url(#sd${s})"/>
+        <path d="M169 107 Q173 104 178 106" stroke="#c4b49e" stroke-width="0.7" fill="none" opacity="0.45"/>
+        <path d="M91 160 Q80 155 73 146 Q68 138 67 130 Q66 122 71 118 Q77 115 83 120 Q88 125 87 135 L86 150" fill="url(#sk${s})"/>
+        <path d="M73 134 Q78 129 84 132" stroke="#c4b49e" stroke-width="0.7" fill="none" opacity="0.45"/>
+        <path d="M100 158 Q135 150 178 155" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.3"/>
+        <path d="M97 172 Q140 164 183 169" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.2"/>
+        <path d="M104 140 Q109 137 114 140" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M129 137 Q134 134 139 137" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M153 138 Q158 135 163 138" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M175 141 Q179 139 182 141" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M108 97 Q110 93 114 95" stroke="url(#nl${s})" stroke-width="2.5" fill="none" opacity="0.5"/>
+        <path d="M132 93 Q134 89 138 91" stroke="url(#nl${s})" stroke-width="2.5" fill="none" opacity="0.5"/>
+        <path d="M156 95 Q158 91 162 93" stroke="url(#nl${s})" stroke-width="2.5" fill="none" opacity="0.5"/>
+        <path d="M176 103 Q178 100 181 102" stroke="url(#nl${s})" stroke-width="2" fill="none" opacity="0.4"/>
+    </g></svg>`;
+}
+
+function handPaper(id) {
+    const s = id || 'B';
+    const defs = makeHandSVG('paper', s);
+    return `<svg class="hand-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>${defs}</defs>
+    <g filter="url(#fs${s})">
+        <path d="M105 250 Q100 250 98 245 L93 215 Q91 208 96 205 L184 205 Q189 208 187 215 L182 245 Q180 250 175 250Z" fill="url(#sk${s})"/>
+        <line x1="110" y1="228" x2="170" y2="228" stroke="#c4b49e" stroke-width="0.7" opacity="0.3"/>
+        <path d="M96 205 Q91 185 93 165 L96 145 Q98 140 104 137 L176 137 Q182 140 184 145 L187 165 Q189 185 184 205Z" fill="url(#sk${s})"/>
+        <ellipse cx="140" cy="172" rx="32" ry="18" fill="#eadcce" opacity="0.3"/>
+        <path d="M104 137 L101 75 Q100 62 105 55 Q110 49 116 53 Q121 58 119 72 L116 137" fill="url(#sk${s})"/>
+        <rect x="106" y="50" width="10" height="6" rx="3" fill="url(#nl${s})" opacity="0.7"/>
+        <path d="M104 62 Q110 58 116 60" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M103 78 Q110 74 117 76" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M103 94 Q110 90 117 92" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.25"/>
+        <path d="M120 135 L118 65 Q117 50 122 42 Q127 36 133 40 Q139 46 137 62 L133 135" fill="url(#sd${s})"/>
+        <rect x="124" y="37" width="11" height="6" rx="3" fill="url(#nl${s})" opacity="0.7"/>
+        <path d="M120 52 Q126 48 132 50" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M119 68 Q126 64 133 66" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M119 84 Q126 80 133 82" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.25"/>
+        <path d="M139 137 L138 72 Q137 58 142 50 Q148 44 154 48 Q160 54 158 70 L154 137" fill="url(#sk${s})"/>
+        <rect x="144" y="45" width="10" height="6" rx="3" fill="url(#nl${s})" opacity="0.7"/>
+        <path d="M140 58 Q146 54 152 56" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M139 74 Q146 70 153 72" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M139 90 Q146 86 153 88" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.25"/>
+        <path d="M157 141 L157 88 Q156 76 161 70 Q166 65 172 69 Q177 74 175 86 L171 141" fill="url(#sd${s})"/>
+        <rect x="162" y="65" width="9" height="5" rx="2.5" fill="url(#nl${s})" opacity="0.6"/>
+        <path d="M159 76 Q164 73 169 75" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M158 90 Q164 86 170 88" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.25"/>
+        <path d="M96 165 Q84 158 76 148 Q70 140 68 131 Q67 123 72 118 Q78 114 85 118 Q90 122 92 132 L93 150" fill="url(#sk${s})"/>
+        <path d="M74 135 Q80 130 86 133" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.4"/>
+        <path d="M72 147 Q78 143 84 145" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M100 175 Q138 166 180 172" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.25"/>
+        <path d="M97 190 Q142 182 182 187" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.2"/>
+    </g></svg>`;
+}
+
+function handScissors(id) {
+    const s = id || 'C';
+    const defs = makeHandSVG('scissors', s);
+    return `<svg class="hand-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>${defs}</defs>
+    <g filter="url(#fs${s})">
+        <path d="M105 250 Q100 250 98 245 L93 215 Q91 208 96 205 L184 205 Q189 208 187 215 L182 245 Q180 250 175 250Z" fill="url(#sk${s})"/>
+        <line x1="110" y1="228" x2="170" y2="228" stroke="#c4b49e" stroke-width="0.7" opacity="0.3"/>
+        <path d="M96 205 Q91 185 93 165 L96 145 Q98 140 104 137 L176 137 Q182 140 184 145 L187 165 Q189 185 184 205Z" fill="url(#sk${s})"/>
+        <path d="M104 137 L101 72 Q100 56 106 48 Q112 42 118 46 Q124 52 122 68 L118 137" fill="url(#sk${s})"/>
+        <rect x="107" y="42" width="11" height="6" rx="3" fill="url(#nl${s})" opacity="0.7"/>
+        <path d="M105 58 Q111 54 117 56" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M104 74 Q111 70 118 72" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M104 90 Q111 86 118 88" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.25"/>
+        <path d="M122 135 L120 68 Q119 52 125 44 Q131 38 137 42 Q143 48 141 64 L137 135" fill="url(#sd${s})"/>
+        <rect x="127" y="38" width="11" height="6" rx="3" fill="url(#nl${s})" opacity="0.7"/>
+        <path d="M122 54 Q128 50 134 52" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M121 70 Q128 66 135 68" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <path d="M121 86 Q128 82 135 84" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.25"/>
+        <path d="M142 140 Q140 130 142 120 Q144 112 150 110 Q156 109 159 114 Q161 119 159 128 L155 140" fill="url(#sk${s})"/>
+        <path d="M144 116 Q149 112 155 114" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.35"/>
+        <path d="M160 142 Q158 132 160 122 Q162 114 168 112 Q174 111 177 116 Q179 121 177 130 L173 142" fill="url(#sd${s})"/>
+        <path d="M162 118 Q167 114 173 116" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.35"/>
+        <path d="M96 165 Q84 158 76 148 Q70 140 68 131 Q67 123 72 118 Q78 114 85 118 Q90 122 92 132 L93 150" fill="url(#sk${s})"/>
+        <path d="M74 135 Q80 130 86 133" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.4"/>
+        <path d="M72 147 Q78 143 84 145" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M100 175 Q138 166 180 172" stroke="#c4b49e" stroke-width="0.6" fill="none" opacity="0.25"/>
+        <path d="M97 190 Q142 182 182 187" stroke="#c4b49e" stroke-width="0.5" fill="none" opacity="0.2"/>
+    </g></svg>`;
+}
+
 const handSVGs = {
-    rock: `<svg class="hand-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="skinRock" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#e8e0d8"/>
-                <stop offset="50%" style="stop-color:#ddd5cc"/>
-                <stop offset="100%" style="stop-color:#d0c8be"/>
-            </linearGradient>
-            <filter id="shadowRock">
-                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25"/>
-            </filter>
-        </defs>
-        <g filter="url(#shadowRock)">
-            <!-- Main fist body -->
-            <path d="M60 130 C55 130 48 125 46 118 L42 95 C40 88 42 80 48 76 L55 72 C58 70 62 70 65 72 L70 76 C72 74 76 72 80 72 L84 74 C87 72 91 71 95 72 L99 74 C102 72 106 72 109 74 L113 77 C116 75 120 75 123 78 L126 82 C129 80 133 80 136 83 L138 88 C141 86 145 87 147 91 L148 96 C150 100 150 105 148 110 L144 125 C141 132 134 136 127 136 L60 130Z" fill="url(#skinRock)"/>
-            <!-- Finger lines -->
-            <path d="M70 76 C70 82 70 90 72 95" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <path d="M84 74 C85 80 86 88 86 94" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <path d="M99 74 C100 80 100 88 99 94" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <path d="M113 77 C113 83 112 89 110 95" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <!-- Knuckle lines -->
-            <path d="M65 82 C72 80 80 80 85 82" stroke="#c4b8aa" stroke-width="1" fill="none" opacity="0.5"/>
-            <path d="M85 80 C92 78 100 78 105 80" stroke="#c4b8aa" stroke-width="1" fill="none" opacity="0.5"/>
-            <path d="M105 80 C112 78 118 79 122 82" stroke="#c4b8aa" stroke-width="1" fill="none" opacity="0.5"/>
-            <!-- Thumb -->
-            <path d="M46 118 L38 108 C35 103 36 97 40 94 L48 88" stroke="url(#skinRock)" stroke-width="14" stroke-linecap="round" fill="none"/>
-            <path d="M46 118 L38 108 C35 103 36 97 40 94 L48 88" stroke="#c4b8aa" stroke-width="1" fill="none" opacity="0.3"/>
-            <!-- Wrist -->
-            <path d="M55 135 L50 165 C49 170 52 174 57 175 L128 175 C133 174 136 170 135 165 L130 135" fill="url(#skinRock)"/>
-            <line x1="58" y1="145" x2="127" y2="145" stroke="#c4b8aa" stroke-width="0.8" opacity="0.3"/>
-        </g>
-    </svg>`,
-
-    paper: `<svg class="hand-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="skinPaper" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#e8e0d8"/>
-                <stop offset="50%" style="stop-color:#ddd5cc"/>
-                <stop offset="100%" style="stop-color:#d0c8be"/>
-            </linearGradient>
-            <filter id="shadowPaper">
-                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25"/>
-            </filter>
-        </defs>
-        <g filter="url(#shadowPaper)">
-            <!-- Palm -->
-            <path d="M55 135 C52 135 48 132 47 128 L45 110 C44 105 46 100 50 98 L55 96 C57 96 59 97 60 100 L62 108 C63 106 65 105 68 105 L72 107 C74 105 77 105 80 106 L82 108 C84 106 87 106 90 107 L92 110 C94 108 97 108 100 110 L102 113 C105 111 108 111 111 113 L113 116 C116 114 120 115 122 118 L124 122 C127 120 131 121 133 125 L134 130 C136 134 135 138 132 141 L60 141 C57 140 55 138 55 135Z" fill="url(#skinPaper)"/>
-            <!-- Index finger extended -->
-            <path d="M60 100 L56 55 C55 48 58 42 63 40 L67 39 C72 38 76 42 77 48 L80 98" fill="url(#skinPaper)"/>
-            <line x1="63" y1="55" x2="76" y2="55" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <line x1="62" y1="68" x2="77" y2="68" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Middle finger extended -->
-            <path d="M80 106 L78 48 C77 40 80 34 85 32 L90 31 C95 30 99 34 100 42 L102 104" fill="url(#skinPaper)"/>
-            <line x1="83" y1="48" x2="97" y2="48" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <line x1="82" y1="62" x2="98" y2="62" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Ring finger extended -->
-            <path d="M100 110 L99 55 C99 47 102 41 107 39 L112 38 C117 37 121 41 122 49 L123 108" fill="url(#skinPaper)"/>
-            <line x1="104" y1="55" x2="118" y2="55" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <line x1="103" y1="68" x2="119" y2="68" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Pinky finger extended -->
-            <path d="M118 115 L118 68 C118 60 121 55 126 53 L130 52 C135 51 138 55 139 62 L139 113" fill="url(#skinPaper)"/>
-            <line x1="122" y1="68" x2="135" y2="68" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Thumb -->
-            <path d="M50 98 L40 90 C37 87 36 83 38 80 L42 76 C44 74 47 74 49 76 L55 96" fill="url(#skinPaper)"/>
-            <line x1="42" y1="84" x2="52" y2="84" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Wrist -->
-            <path d="M50 141 L48 170 C47 175 50 178 55 179 L130 179 C135 178 138 175 137 170 L135 141" fill="url(#skinPaper)"/>
-            <line x1="55" y1="155" x2="132" y2="155" stroke="#c4b8aa" stroke-width="0.8" opacity="0.3"/>
-        </g>
-    </svg>`,
-
-    scissors: `<svg class="hand-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="skinScissors" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#e8e0d8"/>
-                <stop offset="50%" style="stop-color:#ddd5cc"/>
-                <stop offset="100%" style="stop-color:#d0c8be"/>
-            </linearGradient>
-            <filter id="shadowScissors">
-                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25"/>
-            </filter>
-        </defs>
-        <g filter="url(#shadowScissors)">
-            <!-- Palm -->
-            <path d="M55 135 C52 135 48 132 47 128 L45 115 C44 110 46 106 50 104 L58 101 C60 100 63 101 64 104 L66 110 C68 108 71 108 74 110 L78 112 C80 110 83 110 86 112 L88 115 C90 113 93 113 96 115 L98 118 C100 116 103 116 106 118 L108 122 C111 120 114 121 116 124 L118 128 C120 126 123 127 125 130 L126 135 C128 138 127 142 124 144 L60 144 C57 143 55 140 55 135Z" fill="url(#skinScissors)"/>
-            <!-- Index finger up -->
-            <path d="M64 104 L60 52 C59 44 62 38 67 36 L72 35 C77 34 81 38 82 46 L85 102" fill="url(#skinScissors)"/>
-            <line x1="65" y1="52" x2="79" y2="52" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <line x1="64" y1="66" x2="80" y2="66" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Middle finger up -->
-            <path d="M86 110 L85 55 C85 47 88 41 93 39 L98 38 C103 37 107 41 108 49 L109 108" fill="url(#skinScissors)"/>
-            <line x1="90" y1="55" x2="104" y2="55" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <line x1="89" y1="68" x2="105" y2="68" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Ring and pinky folded -->
-            <path d="M108 118 C110 115 113 112 116 115 L118 120 C120 118 122 118 124 121 L125 126 C126 130 124 134 120 136 L95 136 C91 135 88 132 88 128 L90 120 C90 117 92 115 95 114 L108 118Z" fill="url(#skinScissors)"/>
-            <!-- Thumb -->
-            <path d="M50 104 L40 96 C37 93 36 89 38 86 L42 82 C44 80 47 80 49 82 L56 100" fill="url(#skinScissors)"/>
-            <line x1="42" y1="90" x2="52" y2="90" stroke="#c4b8aa" stroke-width="0.8" opacity="0.4"/>
-            <!-- Wrist -->
-            <path d="M52 144 L50 170 C49 175 52 178 57 179 L128 179 C133 178 136 175 135 170 L133 144" fill="url(#skinScissors)"/>
-            <line x1="57" y1="158" x2="130" y2="158" stroke="#c4b8aa" stroke-width="0.8" opacity="0.3"/>
-        </g>
-    </svg>`
+    rock: handRock('R'),
+    paper: handPaper('P'),
+    scissors: handScissors('S')
 };
 
 const btnHandSVGs = {
-    rock: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="btnSkin1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8e0d8"/><stop offset="100%" style="stop-color:#d0c8be"/></linearGradient></defs>
-        <g>
-            <path d="M60 130 C55 130 48 125 46 118 L42 95 C40 88 42 80 48 76 L55 72 C58 70 62 70 65 72 L70 76 C72 74 76 72 80 72 L84 74 C87 72 91 71 95 72 L99 74 C102 72 106 72 109 74 L113 77 C116 75 120 75 123 78 L126 82 C129 80 133 80 136 83 L138 88 C141 86 145 87 147 91 L148 96 C150 100 150 105 148 110 L144 125 C141 132 134 136 127 136 L60 130Z" fill="url(#btnSkin1)"/>
-            <path d="M70 76 C70 82 70 90 72 95" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <path d="M84 74 C85 80 86 88 86 94" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <path d="M99 74 C100 80 100 88 99 94" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <path d="M113 77 C113 83 112 89 110 95" stroke="#c4b8aa" stroke-width="1.2" fill="none" opacity="0.6"/>
-            <path d="M46 118 L38 108 C35 103 36 97 40 94 L48 88" stroke="url(#btnSkin1)" stroke-width="14" stroke-linecap="round" fill="none"/>
-            <path d="M55 135 L50 165 C49 170 52 174 57 175 L128 175 C133 174 136 170 135 165 L130 135" fill="url(#btnSkin1)"/>
-        </g>
-    </svg>`,
-    paper: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="btnSkin2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8e0d8"/><stop offset="100%" style="stop-color:#d0c8be"/></linearGradient></defs>
-        <g>
-            <path d="M55 135 C52 135 48 132 47 128 L45 110 C44 105 46 100 50 98 L55 96 C57 96 59 97 60 100 L62 108 C63 106 65 105 68 105 L72 107 C74 105 77 105 80 106 L82 108 C84 106 87 106 90 107 L92 110 C94 108 97 108 100 110 L102 113 C105 111 108 111 111 113 L113 116 C116 114 120 115 122 118 L124 122 C127 120 131 121 133 125 L134 130 C136 134 135 138 132 141 L60 141 C57 140 55 138 55 135Z" fill="url(#btnSkin2)"/>
-            <path d="M60 100 L56 55 C55 48 58 42 63 40 L67 39 C72 38 76 42 77 48 L80 98" fill="url(#btnSkin2)"/>
-            <path d="M80 106 L78 48 C77 40 80 34 85 32 L90 31 C95 30 99 34 100 42 L102 104" fill="url(#btnSkin2)"/>
-            <path d="M100 110 L99 55 C99 47 102 41 107 39 L112 38 C117 37 121 41 122 49 L123 108" fill="url(#btnSkin2)"/>
-            <path d="M118 115 L118 68 C118 60 121 55 126 53 L130 52 C135 51 138 55 139 62 L139 113" fill="url(#btnSkin2)"/>
-            <path d="M50 98 L40 90 C37 87 36 83 38 80 L42 76 C44 74 47 74 49 76 L55 96" fill="url(#btnSkin2)"/>
-            <path d="M50 141 L48 170 C47 175 50 178 55 179 L130 179 C135 178 138 175 137 170 L135 141" fill="url(#btnSkin2)"/>
-        </g>
-    </svg>`,
-    scissors: `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="btnSkin3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8e0d8"/><stop offset="100%" style="stop-color:#d0c8be"/></linearGradient></defs>
-        <g>
-            <path d="M55 135 C52 135 48 132 47 128 L45 115 C44 110 46 106 50 104 L58 101 C60 100 63 101 64 104 L66 110 C68 108 71 108 74 110 L78 112 C80 110 83 110 86 112 L88 115 C90 113 93 113 96 115 L98 118 C100 116 103 116 106 118 L108 122 C111 120 114 121 116 124 L118 128 C120 126 123 127 125 130 L126 135 C128 138 127 142 124 144 L60 144 C57 143 55 140 55 135Z" fill="url(#btnSkin3)"/>
-            <path d="M64 104 L60 52 C59 44 62 38 67 36 L72 35 C77 34 81 38 82 46 L85 102" fill="url(#btnSkin3)"/>
-            <path d="M86 110 L85 55 C85 47 88 41 93 39 L98 38 C103 37 107 41 108 49 L109 108" fill="url(#btnSkin3)"/>
-            <path d="M108 118 C110 115 113 112 116 115 L118 120 C120 118 122 118 124 121 L125 126 C126 130 124 134 120 136 L95 136 C91 135 88 132 88 128 L90 120 C90 117 92 115 95 114 L108 118Z" fill="url(#btnSkin3)"/>
-            <path d="M50 104 L40 96 C37 93 36 89 38 86 L42 82 C44 80 47 80 49 82 L56 100" fill="url(#btnSkin3)"/>
-            <path d="M52 144 L50 170 C49 175 52 178 57 179 L128 179 C133 178 136 175 135 170 L133 144" fill="url(#btnSkin3)"/>
-        </g>
-    </svg>`
+    rock: handRock('BR'),
+    paper: handPaper('BP'),
+    scissors: handScissors('BS')
 };
 
 const choiceEmoji = { rock: 'Rock', paper: 'Paper', scissors: 'Scissors' };
 
-// Game State
 const state = {
     playerScore: 0,
     computerScore: 0,
@@ -156,7 +139,6 @@ const state = {
     isPlaying: false
 };
 
-// DOM Elements
 const elements = {
     playerScore: document.getElementById('playerScore'),
     computerScore: document.getElementById('computerScore'),
@@ -169,29 +151,23 @@ const elements = {
     statusText: document.getElementById('statusText'),
     historyList: document.getElementById('historyList'),
     resetBtn: document.getElementById('resetBtn'),
-    btnRock: document.getElementById('btnRock'),
-    btnPaper: document.getElementById('btnPaper'),
-    btnScissors: document.getElementById('btnScissors'),
     btnRockHand: document.getElementById('btnRockHand'),
     btnPaperHand: document.getElementById('btnPaperHand'),
     btnScissorsHand: document.getElementById('btnScissorsHand'),
 };
 
-// Initialize button hands
 function initButtonHands() {
     elements.btnRockHand.innerHTML = btnHandSVGs.rock;
     elements.btnPaperHand.innerHTML = btnHandSVGs.paper;
     elements.btnScissorsHand.innerHTML = btnHandSVGs.scissors;
 }
 
-// Determine winner
 function getWinner(player, computer) {
     if (player === computer) return 'draw';
     const winConditions = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
     return winConditions[player] === computer ? 'win' : 'lose';
 }
 
-// Play a round
 function playRound(choice) {
     if (state.isPlaying) return;
     state.isPlaying = true;
@@ -200,22 +176,18 @@ function playRound(choice) {
     const computerChoice = choices[Math.floor(Math.random() * 3)];
     const result = getWinner(choice, computerChoice);
 
-    // Disable buttons
     document.querySelectorAll('.hand-btn').forEach(btn => btn.classList.add('disabled'));
 
-    // Reset classes
     elements.playerHand.className = 'hand-container';
     elements.computerHand.className = 'hand-container';
     elements.statusText.className = 'status-text';
     elements.statusText.textContent = '...';
 
-    // Show player hand shaking immediately
     elements.playerHand.innerHTML = handSVGs[choice];
     elements.playerHand.classList.add('active');
     const playerSvg = elements.playerHand.querySelector('.hand-svg');
     if (playerSvg) playerSvg.classList.add('shake');
 
-    // Show computer hand shaking after short delay
     setTimeout(() => {
         elements.computerHand.innerHTML = handSVGs[computerChoice];
         elements.computerHand.classList.add('active');
@@ -223,7 +195,6 @@ function playRound(choice) {
         if (compSvg) compSvg.classList.add('shake');
     }, 300);
 
-    // Show result after shake animation
     setTimeout(() => {
         state.totalGames++;
         if (result === 'win') {
@@ -263,7 +234,6 @@ function playRound(choice) {
     }, 900);
 }
 
-// Animate number change
 function animateValue(element, start, end) {
     if (start === end) { element.textContent = end; return; }
     const duration = 400;
@@ -278,7 +248,6 @@ function animateValue(element, start, end) {
     requestAnimationFrame(update);
 }
 
-// Add history entry
 function addHistory(round, playerChoice, computerChoice, result) {
     if (state.history.length === 0) {
         elements.historyList.innerHTML = '';
@@ -298,7 +267,6 @@ function addHistory(round, playerChoice, computerChoice, result) {
     state.history.push({ round, playerChoice, computerChoice, result });
 }
 
-// Reset game
 function resetGame() {
     state.playerScore = 0;
     state.computerScore = 0;
@@ -324,7 +292,6 @@ function resetGame() {
     document.querySelectorAll('.hand-btn').forEach(btn => btn.classList.remove('disabled'));
 }
 
-// Initialize default hands
 function initDefaultHands() {
     elements.playerHand.innerHTML = handSVGs.rock;
     elements.computerHand.innerHTML = handSVGs.rock;
@@ -332,7 +299,6 @@ function initDefaultHands() {
     elements.computerHand.className = 'hand-container';
 }
 
-// Create background particles
 function createParticles() {
     const container = document.getElementById('particles');
     for (let i = 0; i < 40; i++) {
@@ -347,7 +313,6 @@ function createParticles() {
     }
 }
 
-// Event Listeners
 document.querySelectorAll('.hand-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const choice = btn.getAttribute('data-choice');
@@ -357,7 +322,6 @@ document.querySelectorAll('.hand-btn').forEach(btn => {
 
 elements.resetBtn.addEventListener('click', resetGame);
 
-// Keyboard support
 document.addEventListener('keydown', (e) => {
     if (state.isPlaying) return;
     if (e.key === '1' || e.key === 'r' || e.key === 'R') playRound('rock');
@@ -365,7 +329,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === '3' || e.key === 's' || e.key === 'S') playRound('scissors');
 });
 
-// Initialize
 initButtonHands();
 initDefaultHands();
 createParticles();
